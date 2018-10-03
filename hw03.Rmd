@@ -1,6 +1,7 @@
 ---
 title: "hw03"
-output: github_document
+output:  
+   github_document
 ---
 
 ```{r setup, include=FALSE}
@@ -32,6 +33,7 @@ dfplt <- df %>%
   geom_point(aes(y = max, colour = "max")) + 
   geom_point(aes(y = min, colour = "min")) +  
   ggtitle("The max and min of GDP per capita for all continents")
+# display the table and graph side by side
 suppressPackageStartupMessages(library(gridExtra))
 grid.arrange(tableGrob(df), dfplt, nrow = 1)
 ```
@@ -63,7 +65,7 @@ The graph indicates the same conclusion with the first part: Asia has a hugh var
 
 Compute the trimmed mean which discard the 10% largest and lowest value.
 
-<div class="twoC">
+
 ```{r results = 'asis', echo=FALSE}
 df <- gapminder %>% 
   group_by(year) %>% 
@@ -79,8 +81,7 @@ df %>%
   geom_point() +
   ggtitle("The trimmed mean of life expectancy over year")
 ```
-</div>
-<div class="twoC"></div>
+
 
 
 In general, life expectancy is constantly increase these years.
@@ -165,7 +166,7 @@ df %>%
   knitr::kable()
 ```
 
-```{r 2: The number of countries with low life expectancy }
+```{r 2_The number of countries with low life expectancy }
 df %>% 
   filter(lifeExp < md) %>% 
   group_by(year, continent) %>%
